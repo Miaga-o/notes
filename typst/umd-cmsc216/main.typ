@@ -3,3 +3,5 @@
 
 #include "course_intro.typ"
 #include "c_language_i.typ"
+#include "c_pointers.typ"
+#include "arrays.typ"

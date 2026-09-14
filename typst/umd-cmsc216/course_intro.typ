@@ -32,6 +32,7 @@ The following commands are the _essentials_ for writing and executing C programs
   + ``` cd ~``` makes the current directory the home directory.
 + ``` mkdir``` creates a new directory in the current directory.
 + ``` cp FILE_1 FILE_2``` will create a new file using the data of the first file.
+  + ``` cp -r FILE_1 FILE_2``` will create a new file using the data of the first file, but including nested files.
 + ``` rm FILE``` permanently removes the specified file.
 + ``` mv``` moves files/directories to a directory or renames files/directories.
   + ``` mv FILE_1 FILE_2``` renames the first file to ``` FILE_2```.
@@ -39,3 +40,29 @@ The following commands are the _essentials_ for writing and executing C programs
   + ``` mv DIRECTORY_1 DIRECTORY_2``` renames the first directory to ``` DIRECTORY_2 ``` if the second directory doesn't exist. Otherwise, the first directory is moved to the second directory.
 + ``` rm DIRECTORY``` removes the specified _empty_ directory.
   + ``` rm -f -r DIRECTORY``` removes the specified directory, _even if it is non-empty._
++ ``` man COMMAND``` pulls up the documentation for a given command.
+  + ``` man SECTION_NUMBER COMMAND``` pulls up the specified section for the documentation of the given command.
++ ``` diff FILE_1 FILE_2``` shows the differences between ``` FILE_1``` and ``` FILE_2```.
+  + ``` diff -bwi FILE_1 FILE_2``` also ignores whitespace differences.
+  + ``` diff -Bwi FILE_1 FILE_2``` also ignores whitespace and newline differences.
+
+
+== Valgrind
+The *valgrind* utility is a tool that provides extra information when compiling a program.
+- valgrind can help locate problems in code when there is a segfault.
+  - ``` valgrind a.out```
+- valgrind can also detect invalid memory operations.
+- To use the valgrind utility, compile your program with the ``` -g``` flag
+
+
+
+== emacs
+The following shortcuts are important.
+- ^X + ^C quits.
+- ^X + ^S saves a file.
+- ^X + ^F opens a file.
+- ^K kills the process.
+- ^Y yanks. 
+- ^S forward searchs.
+- ^R reverse searchs.
+- ^\_ undos last change.

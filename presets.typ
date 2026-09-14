@@ -12,6 +12,7 @@
 #import "@preview/lovelace:0.3.1": *
 #import "@preview/theorion:0.6.0": *
 #import cosmos.fancy: *
+#import "@preview/tdtr:0.6.1": *
 
 
 

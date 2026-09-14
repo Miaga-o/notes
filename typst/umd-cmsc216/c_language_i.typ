@@ -26,7 +26,8 @@ For this course, we will be using C99.
   }
 ```
 
-- ``` #include ``` allows the compiler to include additional header files in the program. In this case, the statement is needed to use ``` printf()```.
+- ``` #include ``` allows the compiler to include other files (generally .h *header files*) for their function prototypes and type/variable declarations.
+  - Standard system files are delimited by *<>* while user-written files are delimited by *""*.
 - The ``` main() ``` function is where all C programs begin execution.
   - Return values from this function indicate the end of a program.
   - By convention, an exit code of 0 means that everything went well.
@@ -42,8 +43,9 @@ C programs must be compiled to be executed.
   - ``` -Wall``` warns about potential problems.
   - ``` -o FILENAME``` places the executable in the specified file.
   - ``` -c``` compiles to object file (without link).
+  - ``` -lm``` compiles with the C math module (if imported).
 
-\ \ \ 
+\
 The following are examples of compiling single files and multiple files at once.
 ```UNIX
   gcc file.c
@@ -78,7 +80,7 @@ To run executables in UNIX, type the name of the executable. In some cases, the 
 - enum {} represents named integer values.
 
 
-#table(columns: (1fr, 1fr, 1fr), inset: 0.7em, fill: (x,y) => if (y == 0) {gray.lighten(70%)}, align: center,
+#table(columns: (1fr, 1fr, 1fr), inset: 0.6em, fill: (x,y) => if (y == 0) {gray.lighten(70%)}, align: center,
   [*Type name*], [*Minimum size (bytes)*], [*Size on _grace_ (bytes)*],
   [char], [1], [1],
   [short], [2], [2],
@@ -180,7 +182,7 @@ Generally, expression statements are most useful with the assignment operators.
 ```c
   int x, y;
   y = x = 123; //x is assigned to 123, then y is assigned to 123 transitively through x.
-  y = 5 + (x = 3); //x is assigned to 3, then y is assigned to 5 + x, which is 8.
+  y = 5 + (x = 3); //x is assigned to 3 which yields 3, then y is assigned to 5 + 3 = 8.
 ```
 
 
@@ -200,6 +202,7 @@ The expressions are inserted into the format string using format specifiers. The
 - %x prints in hexadecimal.
   - %X makes the letters capital.
 - %e prints in exponential form (e notation).
+- %% prints the percent symbol.
 
 Like Java, *escape sequences* can be used in strings to specify things that would be otherwise inconvenient to type out.
 - \\n creates a new line.
@@ -224,6 +227,10 @@ The ``` scanf()``` function *returns the number of items assigned to variables o
   The ampersand symbols associated with each variable means that the address of each variable is being retrieved.
 ]
 
+#caution-block[
+  Avoid adding whitespace at the end of the format string of a ``` scanf()``` function.
+]
+
 
 
 == C Control Statements
@@ -234,3 +241,44 @@ The flow of loops can be controlled using the following keywords:
 - *continue* skips the remainder of the loop and advances to the next iteration.
 
 *Compound statements* are delimited by {}, and can go anywhere a single statement can. Variables defined within are limited to the scope of the compound statement.
+
+
+
+== Additional Formatting Options
+We can specify field width, precision, etc alongside format specifiers.
+- *\-* left-aligns the output within the field width.
+- *0* pads the output with leading zeros when possible.
+- *\+* displays a plus sign for positive signed numbers.
+- An integer specifies the width (minimum characters).
+- An period followed by an integer specifies the precision.
+  - Floating-point: number of digits
+  - Integer: minimum digits
+  - String: maximum characters
+
+
+
+== C Functions
+*Functions* in C follow the following syntax:
+#pseudocode(booktabs: true, booktabs-stroke: gray, line-numbering: none)[
+  *returnType* functionName(parameters) {\/\* statements \*\/}
+]
+
+They are called as follows:
+#pseudocode(booktabs: true, booktabs-stroke: gray, line-numbering: none)[
+  functionName(arguments);
+]
+
+*Function prototypes* provide information about a function's return type and parameter types, but do not define it.
+- The compiler can use them to verify the correctness of function calls.
+- Thus, they allow functions to be defined after the main function in a C program.
+#pseudocode(booktabs: true, booktabs-stroke: gray, line-numbering: none)[
+  *returnType* functionName(parameterTypes);
+]
+
+#important-block[
+  Unlike Java, functions *cannot be overloaded.*
+]
+
+#caution-block[
+  Previously, variables in compound statements could only be declared at the top. In C99, mixed declarations are now allowed. This primarily affected for-loops.
+]
