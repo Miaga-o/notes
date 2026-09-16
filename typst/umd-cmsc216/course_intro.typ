@@ -19,6 +19,16 @@
 
 
 
+
+== Linux Shell Filepaths
+Directories in filepaths are separated by forward slashes (/). Specific characters denote specific directories.
+- The slash (/) refers to the root directory.
+- The dot (.) refers to the current directory.
+- The two dots (..) refer to the parent directory.
+- The tilde (\~) refers to the home directory.
+
+
+
 == Linux Shell Commands
 *Flags* are extra options for commands. They are generally denoted by a dash.
 
@@ -27,12 +37,13 @@ The following commands are the _essentials_ for writing and executing C programs
 + ``` ls``` displays all files and directories in the current directory.
   + ``` ls -al``` will also include hidden directories and files.
   + ``` ls -F``` will append specific characters to items' names depending. Particularly, directories are marked with a forward slash.
+  + ``` ls *.EXTENSION``` displays all files with the provided EXTENSION.
 + ``` cd ``` changes the directory to the home directory.
   + ``` cd DIRECTORY_NAME``` changes the directory to the specified directory.
   + ``` cd ~``` makes the current directory the home directory.
 + ``` mkdir``` creates a new directory in the current directory.
 + ``` cp FILE_1 FILE_2``` will create a new file using the data of the first file.
-  + ``` cp -r FILE_1 FILE_2``` will create a new file using the data of the first file, but including nested files.
+  + ``` cp -r FILE_1 FILE_2``` will create a new file using the data of the first file, but recursively. *This is required when copying folders.*
 + ``` rm FILE``` permanently removes the specified file.
 + ``` mv``` moves files/directories to a directory or renames files/directories.
   + ``` mv FILE_1 FILE_2``` renames the first file to ``` FILE_2```.
@@ -50,9 +61,17 @@ The following commands are the _essentials_ for writing and executing C programs
 == Valgrind
 The *valgrind* utility is a tool that provides extra information when compiling a program.
 - valgrind can help locate problems in code when there is a segfault.
-  - ``` valgrind a.out```
 - valgrind can also detect invalid memory operations.
-- To use the valgrind utility, compile your program with the ``` -g``` flag
+- To use the valgrind utility, compile your program with the ``` -g``` flag, then execute using valgrind. 
+  - ``` valgrind a.out```
+  - ``` valgrind --track-origins=yes a.out```
+    - This shows were uninitialized values come from.
+  - ``` valgrind a.out < public01.in```
+    - Using valgrind with an input file and input redirection.
+  - ``` valgrind a.out < data.txt > results```
+    - Using valgrind with input and output redirection.
+
+
 
 
 

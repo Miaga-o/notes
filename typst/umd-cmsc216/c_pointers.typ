@@ -81,7 +81,20 @@ By dereferencing a pointer variable, we can access the value present at the addr
 
 
 == Pointers as Parameters
-#important-block[Everything in C is passed by value.]
+#important-block[
+  Everything in C is passed by value.
+]
+Below is a good example of a function that needs pointers as parameters
+
+```c
+  void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+  }
+```
+
+Because things are passed by value, pointers are needed to change the values of the variables provided in the function call.
 
 
 
@@ -100,10 +113,15 @@ When a pointer is defined, it points to the address associated with the memory l
 
 
 
-== NULL Pointer
+== ``` NULL``` Pointer
 A *NULL pointer* points to the address 0, where nothing is allowed to be accessed.
 - This is defined in stddef.h, which is included by many header files.
+```c
+  #define NULL ((void*)0)
+```
 - *NULL* is analogous to *null* in Java.
+  - Dereferencing a NULL pointer usually results in a segfault, as you are generally not supposed to access the address 0.
+- NULL can be assigned to any kind of pointer variable, so checking whether or not a pointer is NULL prior to dereferencing is safest.
 
 
 
