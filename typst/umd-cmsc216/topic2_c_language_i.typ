@@ -18,7 +18,7 @@ For this course, we will be using C99.
 
 
 == C Program Example
-```C
+```c
   #include <studio.h>
   int main() {
     printf("Fear the turtle\n");
@@ -47,7 +47,7 @@ C programs must be compiled to be executed.
 
 \
 The following are examples of compiling single files and multiple files at once.
-```UNIX
+```bash
   gcc file.c
   gcc -g -Wall -o prog1 prog1.c tools.c
 ```

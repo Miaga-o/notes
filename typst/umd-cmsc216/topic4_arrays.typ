@@ -21,7 +21,7 @@ Like Java arrays, all elements in an *array* are of the same type and indexed us
   ```
 ]
 
-Arrays can be viewed as a pointer to the first byte of the first element of the array.
+Arrays can be viewed as a pointer to the first element of the array.
 - _The name itself is not a pointer._ Rather, the compiler converts it to a pointer when needed.
 - The (constant) size of an array must be known at compile time.
 
@@ -41,6 +41,7 @@ When initializing arrays, you can list the elements separated by commas and in-b
 - 0s pad the array if the initializer is not complete.
 - A size does not need to be provided for an initialized array, as the size is _implicit_.
 - Initializers with excessive elements cause compiler errors.
+- Initializing with no elements in-between braces causes a compiler error.
 
 
 
@@ -72,7 +73,7 @@ All occurences of _name_ in the program will be replaced with _value_.
 
 
 == Array Parameters
-Recall that arrays are pointers to the first byte of the first element of the array.
+Recall that arrays are pointers to the first element of the array.
 - The parameter declaration int a[] is equivalent to int \*a.
 - Thus, modifications done to an array parameter are done to the passed-in array.
 - Consequently, the defined array parameter size does not matter. _Only the type matters._
